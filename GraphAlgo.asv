@@ -5,13 +5,13 @@
 s = [1 1 1 2 2 3 3 4 5 5 6 7];
 t = [2 4 8 3 7 4 6 5 6 8 7 8];
 
-% The length of the road edges in index_final format (As per new_map)
+% The length of the road edges in index_final format
 % Unit metre
 lengths = [500 500 600 600 200 200 100 100 150 150 410 410 650 650];
 
-% The width of the road edges in index_final format (As per new_map)
+% The width of the road edges in index_final format
 % Unit metre
-widths = [6 6 7 7 5 5 3 3 4.5 4.5 5.5 5.5 6.5 6.5];
+widths = [];
 
 % These weights would be given from the F-CNN%
 % Using static pre-defined weights for now %
@@ -80,7 +80,7 @@ for i = 1:length(pth_final)
     for j = 1:length(curr_path)-1
         index = findedge(G, curr_path(1, j), curr_path(1, j+1));
         
-        % Calculate the flow for each edge using the formula
+        % Calculate the flow for each edge
         flow = [flow (lengths(index)*widths(index))/(widths(index))];
     end
     
